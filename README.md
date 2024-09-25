@@ -14,7 +14,7 @@ Prije bilo cega moramo da prilagodimo SPL za izvrsavanje, to radimo podesavanjem
 Nakon ovih koraka vrsimo konfiguraciju Buildroot okruzenja pomocu komande make menuconfig. Posto buildroot konfiguracija sa laboratorijskih vjezbi nije prilagodjena za rad sa HS3001 senzorom, u Buildroot konfiguraciji treba napraviti sljedece izmjene:
 
   U okviru Toolchain:
-   - postaviti Toolchain type opciju na Buildroot toolchain
+   - postaviti Toolchain type opciju na {Buildroot toolchain}
    - postaviti Kernel Headers opciju na Linux 6.6.x kernel headers
 
   U okviru Kernel:
