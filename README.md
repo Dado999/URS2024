@@ -71,7 +71,7 @@ Kao sto vidimo na slici, Temp&Hum 17 Click ploca se povezuje na odgovarajuce pin
 
 ![Connection (1)](https://github.com/user-attachments/assets/1d5275e7-23d8-4521-8200-7299f6f8a3e4)
 
-Po povezivanju i pokretanju minicom programa, prvo sto moramo uraditi je ucitati drajver za hs3001 senzor pomocu komande:
+Nakon povezivanja i podizanja sistema, prvo sto moramo uraditi je ucitati drajver za HS3001 senzor pomocu komande:
 
 ```
 modprobe hs3001
