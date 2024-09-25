@@ -8,7 +8,7 @@ Rjesenje projektnog zadata iz Ugradjenih sistema
 
 Posto Buildroot konfiguracija sa laboratorijskih vjezbi nije kompatibilna za rad sa HS3001 senzorom, polazna Buildroot konfiguracija mora biti obezbijediti rad sa Linux 6.6 kernelom, konfiguracija ce detaljnije biti opisana u nastavku teksta.
 
-# Konfiguracija Buildroot konfiguracije i prilagodjavanje SPL-a
+# Konfiguracija Buildroot-a i prilagodjavanje SPL-a
 Prije bilo cega moramo da prilagodimo SPL za izvrsavanje, to radimo podesavanjem opcije bootloaders -> uboot -> custom U-Boot patches u buildroot konfiguraciji i postavljamo ovaj parametar na vrijednost  board/terasic/de1soc_cyclone5/patch/de1-soc-handoff.patch. Takodje vrsimo i editovanje boot-env.txt fajla koji se nalazi u  board/terasic/de1soc_cyclone5 folderu.
 
 Nakon ovih koraka vrsimo konfiguraciju Buildroot okruzenja pomocu komande make menuconfig. Posto buildroot konfiguracija sa laboratorijskih vjezbi nije prilagodjena za rad sa HS3001 senzorom, u Buildroot konfiguraciji treba napraviti sljedece izmjene:
