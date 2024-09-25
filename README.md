@@ -59,7 +59,14 @@ Nakon ovoga neophodno je da se prebacimo u folder output/images, te da prebacimo
 ```
 sudo dd if=sdcard.img of=/dev/sdb bs=1M
 ```
-Zadnji korak je prebacivanje **socfpga.rbf** fajla na **FAT32** particiju nase kartice, te nakon toga nase okruzenje je spremno za izvrsavanje i rad sa HS3001 senzoro.
+Zadnji korak je prebacivanje ***socfpga.rbf*** fajla na **FAT32** particiju nase kartice, te nakon toga nase okruzenje je spremno za izvrsavanje i rad sa HS3001 senzoro.
 
-#Povezivanje Temp&Hum 17 Click ploce na DE1-SoC plocu
+# Povezivanje Temp&Hum 17 Click ploce na DE1-SoC plocu
+
+![image](https://github.com/user-attachments/assets/438289c6-b238-4a5b-be65-67dc97dd048b)
+
+Kao sto vidimo na slici, Temp&Hum 17 Click ploca se povezuje na odgovarajuce pinove GPIO0 konektora. Pored SCL i SDA pinova, moramo povezati uzemljenje i napajanje(3.3V). Oni se spajaju na GPIO1 kontroleru. 
+
+![Connection](https://github.com/user-attachments/assets/48f04a44-8d00-43d1-852e-5230a74adb71)
+
 
