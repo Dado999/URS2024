@@ -5,8 +5,8 @@ Rjesenje projektnog zadata iz Ugradjenih sistema
   - Buildroot okruzenje konfigurisano za rad sa Linux 6.6 kernelom
   - SD kartica od minimalno 4GB
   - DE1-SoC ploca
-
-***Posto Buildroot konfiguracija sa laboratorijskih vjezbi nije kompatibilna za rad sa HS3001 senzorom, polazna Buildroot konfiguracija mora biti obezbijediti rad sa Linux 6.6 kernelom, konfiguracija ce detaljnije biti opisana u nastavku teksta.***
+>[!NOTE]
+> Posto Buildroot konfiguracija sa laboratorijskih vjezbi nije kompatibilna za rad sa HS3001 senzorom, polazna Buildroot konfiguracija mora biti obezbijediti rad sa Linux 6.6 kernelom, konfiguracija ce detaljnije biti opisana u nastavku teksta.
 
 # Konfiguracija Buildroot-a i prilagodjavanje SPL-a
 Prije bilo cega moramo da prilagodimo SPL za izvrsavanje, to radimo podesavanjem opcije bootloaders -> uboot -> custom U-Boot patches u buildroot konfiguraciji i postavljamo ovaj parametar na vrijednost  **board/terasic/de1soc_cyclone5/patch/de1-soc-handoff.patch**. Takodje vrsimo i editovanje **boot-env.txt** fajla koji se nalazi u  **board/terasic/de1soc_cyclone5** folderu.
