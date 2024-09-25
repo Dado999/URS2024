@@ -97,4 +97,37 @@ i vlaznosti iscitavanjem fajla:
 ![370687590-0bc984a8-dd98-4176-815d-79f82d0e122d](https://github.com/user-attachments/assets/b468bb64-2d16-4bcf-bde0-82b43c21edbd)
 
 
+Ali kao sto vidimo, iscitavanje ovih fajlova dovodi do greske "no zero length". O cemu se radi? Problem je sto nasa razvojna ploca, DE1-SoC ne podrzava **zero-length write** operacije, sto mozemo vidjeti ako pogledamo **i2c-core-base.c** fajl: 
 
+```
+for (i = 0; i < num; i++) {
+        u16 len = msgs[i].len;
+
+        if (msgs[i].flags & I2C_M_RD) {
+            if (do_len_check && i2c_quirk_exceeded(len, q->max_read_len))
+                return i2c_quirk_error(adap, &msgs[i], "msg too long");
+
+            if (q->flags & I2C_AQ_NO_ZERO_LEN_READ && len == 0)
+                return i2c_quirk_error(adap, &msgs[i], "no zero length");
+        } else {
+            if (do_len_check && i2c_quirk_exceeded(len, q->max_write_len))
+                return i2c_quirk_error(adap, &msgs[i], "msg too long");
+
+            if (q->flags & I2C_AQ_NO_ZERO_LEN_WRITE && len == 0)
+                return i2c_quirk_error(adap, &msgs[i], "no zero length");
+        }
+    }
+```
+Dalje, u HS3001 drajveru (hs3001.c) mozemo naci sljedecu funkciju:
+
+```
+static int hs3001_read(struct device *dev, enum hwmon_sensor_types type,
+               u32 attr, int channel, long *val)
+ unutar koje se poziva ova funkcija: 
+
+i2c_master_send(client, NULL, 0);
+```
+Zakljucak je da ova funkcija salje **zero-length write** operaciju koja nije podrzana na DE1-SoC ploci, te iz tog razloga dobijamo error i ne mozemo da procitamo vrijednosti temperature i vlaznosti vazduha. 
+
+# Kako rijesiti ovaj problem? 
+Preporuka je da se koristi ploca koja ce imati podrsku za ovu vrstu upisa, poput Raspberry pi ploce, koja ima omogucen **zero-length write** operaciju.	
