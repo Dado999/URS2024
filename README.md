@@ -9,18 +9,26 @@ Rjesenje projektnog zadata iz Ugradjenih sistema
 Posto Buildroot konfiguracija sa laboratorijskih vjezbi nije kompatibilna za rad sa HS3001 senzorom, polazna Buildroot konfiguracija mora biti obezbijediti rad sa Linux 6.6 kernelom, konfiguracija ce detaljnije biti opisana u nastavku teksta.
 
 # Konfiguracija Buildroot-a i prilagodjavanje SPL-a
-Prije bilo cega moramo da prilagodimo SPL za izvrsavanje, to radimo podesavanjem opcije bootloaders -> uboot -> custom U-Boot patches u buildroot konfiguraciji i postavljamo ovaj parametar na vrijednost  board/terasic/de1soc_cyclone5/patch/de1-soc-handoff.patch. Takodje vrsimo i editovanje boot-env.txt fajla koji se nalazi u  board/terasic/de1soc_cyclone5 folderu.
+Prije bilo cega moramo da prilagodimo SPL za izvrsavanje, to radimo podesavanjem opcije bootloaders -> uboot -> custom U-Boot patches u buildroot konfiguraciji i postavljamo ovaj parametar na vrijednost  **board/terasic/de1soc_cyclone5/patch/de1-soc-handoff.patch**. Takodje vrsimo i editovanje **boot-env.txt** fajla koji se nalazi u  **board/terasic/de1soc_cyclone5** folderu.
 
-Nakon ovih koraka vrsimo konfiguraciju Buildroot okruzenja pomocu komande make menuconfig. Posto buildroot konfiguracija sa laboratorijskih vjezbi nije prilagodjena za rad sa HS3001 senzorom, u Buildroot konfiguraciji treba napraviti sljedece izmjene:
+Nakon ovih koraka vrsimo konfiguraciju Buildroot okruzenja pomocu komande 
+```
+make menuconfig
+```
+Posto buildroot konfiguracija sa laboratorijskih vjezbi nije prilagodjena za rad sa HS3001 senzorom, u Buildroot konfiguraciji treba napraviti sljedece izmjene:
 
-  U okviru Toolchain:
+  U okviru **Toolchain**:
    - postaviti Toolchain type opciju na **_Buildroot toolchain_**
    - postaviti Kernel Headers opciju na **_Linux 6.6.x kernel headers_**
 
-  U okviru Kernel:
+  U okviru **Kernel**:
    - postaviti Custom repository version opciju na ***sofpga-6.6***
 
-Nakon ovih izmjena potrebno je pristupiti Buildroot Linux kernel konfiguraciji pomocu komande make linux-menuconfig. Potrebno je ukljciti/iskljuciti sledece opcije za potrebe projekta:
+Nakon ovih izmjena potrebno je pristupiti Buildroot Linux kernel konfiguraciji pomocu komande
+```
+make linux-menuconfig
+```
+Potrebno je ukljciti/iskljuciti sledece opcije za potrebe projekta:
 
   U okviru **Device Drivers -> Character Devices**:
    - iskljciti opciju ***NEWHAVEN LCD***
@@ -43,15 +51,15 @@ Nakon sto smo konfigurisali Buildroot okruzenje, potrebno je da podesimo nas soc
 };
 ```
 Nakon podesavanja .dts fajla, sve je spremno za kreiranje slike za SD karticu, te koristimo komandu:
-
+```
 make clean
 make
-
+```
 Nakon ovoga neophodno je da se prebacimo u folder output/images, te da prebacimo sdcard.img fajl na nasu SD karticu pomocu dd komande : 
-
+```
 sudo dd if=sdcard.img of=/dev/sdb bs=1M
-
-Zadnji korak je prebacivanje socfpga.rbf fajla na FAT32 particiju nase kartice, te nakon toga nase okruzenje je spremno za izvrsavanje i rad sa HS3001 senzoro.
+```
+Zadnji korak je prebacivanje **socfpga.rbf** fajla na **FAT32** particiju nase kartice, te nakon toga nase okruzenje je spremno za izvrsavanje i rad sa HS3001 senzoro.
 
 #Povezivanje Temp&Hum 17 Click ploce na DE1-SoC plocu
 
