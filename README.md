@@ -86,12 +86,12 @@ i2cdetect -ry 2
 Nakon toga mozemo pokusati pristupiti vrijednostima temperature ocitanim pomocu HS3001 senzora iscitavanjem fajla: 
 
 ```
-/sys/class/hwmon/hwmon0/temp1_index
+/sys/class/hwmon/hwmon0/temp1_input
 ```
 i vlaznosti iscitavanjem fajla:
 
 ```
-/sys/class/hwmon/hwmon0/hum1_index
+/sys/class/hwmon/hwmon0/hum1_input
 ```
 
 
