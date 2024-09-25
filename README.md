@@ -65,7 +65,7 @@ Zadnji korak je prebacivanje ***socfpga.rbf*** fajla na **FAT32** particiju nase
 
 ![image](https://github.com/user-attachments/assets/438289c6-b238-4a5b-be65-67dc97dd048b)
 
-Kao sto vidimo na slici, Temp&Hum 17 Click ploca se povezuje na odgovarajuce pinove GPIO0 konektora. Pored SCL i SDA pinova, moramo povezati uzemljenje i napajanje(3.3V). Oni se spajaju na GPIO1 kontroleru. 
+Kao sto vidimo na slici, Temp&Hum 17 Click ploca se povezuje na odgovarajuce pinove **GPIO0** konektora. Pored **SCL** i **SDA** pinova, moramo povezati uzemljenje i napajanje(3.3V). Oni se spajaju na **GPIO1** kontroleru. 
 
 ![Connection (1)](https://github.com/user-attachments/assets/1d5275e7-23d8-4521-8200-7299f6f8a3e4)
 
