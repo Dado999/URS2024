@@ -99,7 +99,7 @@ i vlaznosti iscitavanjem fajla:
 
 Ali kao sto vidimo, iscitavanje ovih fajlova dovodi do greske
 
-❗i2c i2c-2: adapter quirk: no zero length (addr 0x0044, size 0, write)❗ 
+❗**i2c i2c-2: adapter quirk: no zero length (addr 0x0044, size 0, write)**❗ 
 
 O cemu se radi? Problem je sto nasa razvojna ploca, DE1-SoC ne podrzava **zero-length write** operacije, sto mozemo vidjeti ako pogledamo **i2c-core-base.c** fajl: 
 
