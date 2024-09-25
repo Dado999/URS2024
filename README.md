@@ -60,6 +60,7 @@ Nakon ovoga neophodno je da se prebacimo u folder output/images, te da prebacimo
 sudo dd if=sdcard.img of=/dev/sdb bs=1M
 ```
 Zadnji korak je prebacivanje ***socfpga.rbf*** fajla na **FAT32** particiju nase kartice, te nakon toga nase okruzenje je spremno za izvrsavanje i rad sa HS3001 senzoro.
+![Screenshot from 2024-09-25 13-14-48](https://github.com/user-attachments/assets/0bc984a8-dd98-4176-815d-79f82d0e122d)
 
 # Povezivanje Temp&Hum 17 Click ploce na DE1-SoC plocu
 
