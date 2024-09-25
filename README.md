@@ -9,7 +9,7 @@ Rjesenje projektnog zadata iz Ugradjenih sistema
 > Posto Buildroot konfiguracija sa laboratorijskih vjezbi nije kompatibilna za rad sa HS3001 senzorom, polazna Buildroot konfiguracija mora biti obezbijediti rad sa Linux 6.6 kernelom, konfiguracija ce detaljnije biti opisana u nastavku teksta.
 
 # Konfiguracija Buildroot-a i prilagodjavanje SPL-a
-Prije bilo cega moramo da prilagodimo SPL za izvrsavanje, to radimo podesavanjem opcije bootloaders -> uboot -> custom U-Boot patches u buildroot konfiguraciji i postavljamo ovaj parametar na vrijednost  **board/terasic/de1soc_cyclone5/patch/de1-soc-handoff.patch**. Takodje vrsimo i editovanje **boot-env.txt** fajla koji se nalazi u  **board/terasic/de1soc_cyclone5** folderu.
+Prije bilo cega moramo da prilagodimo SPL za izvrsavanje, to radimo podesavanjem opcije ***Bootloaders -> Uboot -> custom U-Boot patches*** u buildroot konfiguraciji i postavljamo ovaj parametar na vrijednost  **board/terasic/de1soc_cyclone5/patch/de1-soc-handoff.patch**. Takodje vrsimo i editovanje **boot-env.txt** fajla koji se nalazi u  **board/terasic/de1soc_cyclone5** folderu.
 
 Nakon ovih koraka vrsimo konfiguraciju Buildroot okruzenja pomocu komande 
 ```
@@ -37,7 +37,7 @@ Potrebno je ukljciti/iskljuciti sledece opcije za potrebe projekta:
    - ukljuciti opciju ***Renesas HS3001 humidity and temperature sensors*** ( kao modul <M> )
 
 # Prilagodjavanje DTS fajla
-Nakon sto smo konfigurisali Buildroot okruzenje, potrebno je da podesimo nas socfpga_cyclone5_de1_soc.dts fajl da radi sa HS3001 senzorom. U okviru fajla prije svega moramo osposobiti &i2c2 bus kreiranjem novog cvora pod istoimenim nazivom. Unutar cvora ukljucujemo podcvor za temp&hum senzor, koji ce imati compatible string "renesas,hs3001", i req = <0x44> iz razloga sto je adresa temp&hum 17 click 0x44. Cvor treba da ima sljedeci oblik:
+Nakon sto smo konfigurisali Buildroot okruzenje, potrebno je da podesimo nas **socfpga_cyclone5_de1_soc.dts** fajl da radi sa HS3001 senzorom. U okviru fajla prije svega moramo osposobiti ***&i2c2*** bus kreiranjem novog cvora pod istoimenim nazivom. Unutar cvora ukljucujemo podcvor za temp&hum senzor, koji ce imati compatible string ***"renesas,hs3001"***, i **req = <0x44>** iz razloga sto je adresa temp&hum 17 click 0x44. Cvor treba da ima sljedeci oblik:
 ```
 &i2c2 { 
     status = "okay";
