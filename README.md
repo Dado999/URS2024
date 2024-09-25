@@ -5,6 +5,7 @@ Rjesenje projektnog zadata iz Ugradjenih sistema
   - Buildroot okruzenje konfigurisano za rad sa Linux 6.6 kernelom
   - SD kartica od minimalno 4GB
   - DE1-SoC ploca
+
 Posto Buildroot konfiguracija sa laboratorijskih vjezbi nije kompatibilna za rad sa HS3001 senzorom, polazna Buildroot konfiguracija mora biti obezbijediti rad sa Linux 6.6 kernelom, konfiguracija ce detaljnije biti opisana u nastavku teksta.
 
 # Konfiguracija Buildroot konfiguracije i prilagodjavanje SPL-a
