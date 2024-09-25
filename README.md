@@ -94,7 +94,7 @@ i vlaznosti iscitavanjem fajla:
 /sys/class/hwmon/hwmon0/hum1_input
 ```
 
+![370687590-0bc984a8-dd98-4176-815d-79f82d0e122d](https://github.com/user-attachments/assets/b468bb64-2d16-4bcf-bde0-82b43c21edbd)
 
-![Screenshot from 2024-09-25 13-14-48](https://github.com/user-attachments/assets/0bc984a8-dd98-4176-815d-79f82d0e122d)
 
 
