@@ -97,7 +97,8 @@ i vlaznosti iscitavanjem fajla:
 ![370687590-0bc984a8-dd98-4176-815d-79f82d0e122d](https://github.com/user-attachments/assets/b468bb64-2d16-4bcf-bde0-82b43c21edbd)
 
 
-Ali kao sto vidimo, iscitavanje ovih fajlova dovodi do greske "no zero length". O cemu se radi? Problem je sto nasa razvojna ploca, DE1-SoC ne podrzava **zero-length write** operacije, sto mozemo vidjeti ako pogledamo **i2c-core-base.c** fajl: 
+Ali kao sto vidimo, iscitavanje ovih fajlova dovodi do greske "no zero length". O cemu se radi?
+Problem je sto nasa razvojna ploca, DE1-SoC ne podrzava **zero-length write** operacije, sto mozemo vidjeti ako pogledamo **i2c-core-base.c** fajl: 
 
 ```
 for (i = 0; i < num; i++) {
