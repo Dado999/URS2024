@@ -18,19 +18,20 @@ Nakon ovih koraka vrsimo konfiguraciju Buildroot okruzenja pomocu komande make m
    - postaviti Kernel Headers opciju na **_Linux 6.6.x kernel headers_**
 
   U okviru Kernel:
-   - postaviti Custom repository version opciju na sofpga-6.6
+   - postaviti Custom repository version opciju na ***sofpga-6.6***
 
 Nakon ovih izmjena potrebno je pristupiti Buildroot Linux kernel konfiguraciji pomocu komande make linux-menuconfig. Potrebno je ukljciti/iskljuciti sledece opcije za potrebe projekta:
 
-  U okviru Device Drivers -> Character Devices:
-   - iskljciti opciju NEWHAVEN LCD
+  U okviru **Device Drivers -> Character Devices**:
+   - iskljciti opciju ***NEWHAVEN LCD***
 
-  U okviru Device Drivers -> Hardware Monitoring Support:
-   - ukljuciti opciju Renesas HS3001 humidity and temperature sensors ( kao modul <M> )
+  U okviru **Device Drivers -> Hardware Monitoring Support**:
+   - ukljuciti opciju ***Renesas HS3001 humidity and temperature sensors*** ( kao modul <M> )
 
 # Prilagodjavanje DTS fajla
 Nakon sto smo konfigurisali Buildroot okruzenje, potrebno je da podesimo nas socfpga_cyclone5_de1_soc.dts fajl da radi sa HS3001 senzorom. U okviru fajla prije svega moramo osposobiti &i2c2 bus kreiranjem novog cvora pod istoimenim nazivom. Unutar cvora ukljucujemo podcvor za temp&hum senzor, koji ce imati compatible string "renesas,hs3001", i req = <0x44> iz razloga sto je adresa temp&hum 17 click 0x44. Cvor treba da ima sljedeci oblik:
-&i2c2 { 
+
+**&i2c2 { 
     status = "okay";
 	clock-frequency = <100000>;
 
@@ -39,7 +40,8 @@ Nakon sto smo konfigurisali Buildroot okruzenje, potrebno je da podesimo nas soc
 		compatible = "renesas,hs3001";
 		reg = <0x44>;
 	};
-};
+};**
+
 Nakon podesavanja .dts fajla, sve je spremno za kreiranje slike za SD karticu, te koristimo komandu:
 
 make clean
